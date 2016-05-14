@@ -217,7 +217,7 @@ public class SetNuts : Nuts {
 			//power up do martelo
             if ((PowerUps.hammerTime == true) && (quantHammer > 0))
             {
-				audio.PlayOneShot(sounds[4], 0.2f);
+				audio.PlayOneShot(sounds[4], 1f);
                 ClearScreenPowerup();
             }
 
@@ -235,13 +235,13 @@ public class SetNuts : Nuts {
 					quantSpdd--;
 
 					PowerUps.spddBool = false;
-					audio.PlayOneShot(sounds[5], 0.2f);
+					audio.PlayOneShot(sounds[5], 1f);
 				}
 			
 			//power up do boost de tempo
 			}
 			if ((PowerUps.clockBool == true) && (quantClock > 0)){
-				audio.PlayOneShot(sounds[6], 0.5f);
+				audio.PlayOneShot(sounds[6], 1f);
 
 				countdown += 15;
 				PowerUps.clockBool = false;
