@@ -51,8 +51,8 @@ public class SetNuts : Nuts {
 			case 1:
 				demand = 50;
 				oneStar = 50;
-				twoStar = 70;
-				threeStar = 90;
+				twoStar = 60;
+				threeStar = 70;
 				levels = 1;
 				
 			break;
@@ -60,8 +60,8 @@ public class SetNuts : Nuts {
 			case 2:
 				demand = 55;
 				oneStar = 55;
-				twoStar = 75;
-				threeStar = 95;
+				twoStar = 65;
+				threeStar = 80;
 				levels = 2;
 			break;
 
@@ -69,7 +69,7 @@ public class SetNuts : Nuts {
 				demand = 60;
 				oneStar = 60;
 				twoStar = 80;
-				threeStar = 100;
+				threeStar = 90;
 				levels = 3;
 			break;
 
@@ -163,7 +163,6 @@ public class SetNuts : Nuts {
 			countdown = 0;
 			ClearScreen();
 			speed = 0;
-
 			if (levels < 10){
 				totalMoney = score - demand;
                 if (Nuts.score >= threeStar ){
@@ -217,7 +216,7 @@ public class SetNuts : Nuts {
 			//power up do martelo
             if ((PowerUps.hammerTime == true) && (quantHammer > 0))
             {
-				audio.PlayOneShot(sounds[4], 1f);
+				audio.GetComponent<AudioSource>().PlayOneShot(sounds[4], 1f);
                 ClearScreenPowerup();
             }
 
