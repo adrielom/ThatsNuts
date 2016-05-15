@@ -5,8 +5,10 @@ using UnityEngine.Advertisements;
 public class Ads : MonoBehaviour {
 
     [SerializeField] string IDAdds;
+    BonusAdLayout b = new BonusAdLayout ();
 
     void Awake () {
+        b.Initialize ();
         Advertisement.Initialize (IDAdds, true);
 	}
 	
@@ -31,6 +33,8 @@ public class Ads : MonoBehaviour {
                 SetNuts.quantClock++;
             else if (a == 2)
                 SetNuts.quantSpdd++;
+
+            b.CallBonus ();
             break;
 
         }
