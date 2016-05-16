@@ -4,6 +4,7 @@ using System.Collections;
 public class Nuts : MonoBehaviour {
 
 	//Declaraçao das variaveis
+
     public static float speed;
     public Sprite brokenSprite;
     public Sprite whiteSprite;
@@ -25,7 +26,7 @@ public class Nuts : MonoBehaviour {
 		audio = GetComponent<AudioSource> ();
 		anim = this.GetComponent<Animator>();
 		this.anim.enabled = false;
-        speed = 1.5f;
+        speed = 2f;
         life = 3;
         score = 0;
 

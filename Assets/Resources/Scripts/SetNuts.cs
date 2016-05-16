@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class SetNuts : Nuts {
 
-	//declaraçao de variaveis
+    //declaraçao de variaveis
+    int lastLevel;
     public GameObject[] nuts;
 	public GameObject[] stars;
 	public GameObject gameOverLayout;
@@ -54,7 +55,7 @@ public class SetNuts : Nuts {
 				twoStar = 60;
 				threeStar = 70;
 				levels = 1;
-				
+                SetNuts.speed = 2;
 			break;
 
 			case 2:
@@ -63,7 +64,8 @@ public class SetNuts : Nuts {
 				twoStar = 65;
 				threeStar = 80;
 				levels = 2;
-			break;
+                SetNuts.speed = 2;  
+            break;
 
 			case 3:
 				demand = 60;
@@ -71,7 +73,8 @@ public class SetNuts : Nuts {
 				twoStar = 80;
 				threeStar = 90;
 				levels = 3;
-			break;
+                SetNuts.speed = 2.5f;
+            break;
 
 			case 4:
 				demand = 65;
@@ -79,7 +82,8 @@ public class SetNuts : Nuts {
 				twoStar = 85;
 				threeStar = 105;
 				levels = 4;
-			break;
+                SetNuts.speed = 2.5f;
+            break;
 
 			case 5:
 				demand = 70;
@@ -87,7 +91,8 @@ public class SetNuts : Nuts {
 				twoStar = 90;
 				threeStar = 110;
 				levels = 5;
-			break;
+                SetNuts.speed = 2.7f;
+            break;
 
 			case 6:
 				demand = 75;
@@ -95,7 +100,8 @@ public class SetNuts : Nuts {
 				twoStar = 95;
 				threeStar = 115;
 				levels = 6;
-			break;
+                SetNuts.speed = 2.8f;
+            break;
 
 			case 7:
 				countdown = 80;
@@ -104,7 +110,8 @@ public class SetNuts : Nuts {
 				twoStar = 100;
 				threeStar = 120;
 				levels = 7;
-			break;
+                SetNuts.speed = 2.9f;
+            break;
 
 			case 8:
 				countdown = 80;
@@ -113,7 +120,8 @@ public class SetNuts : Nuts {
 				twoStar = 105;
 				threeStar = 125;
 				levels = 8;
-			break;
+                SetNuts.speed = 3f;
+            break;
 
 			case 9:
 				countdown = 80;
@@ -122,13 +130,15 @@ public class SetNuts : Nuts {
 				twoStar = 110;
 				threeStar = 130;
 				levels = 9;
-			break;
+                SetNuts.speed = 3f;
+            break;
 
 			case 10:
 				
 				totalMoney = PlayerPrefs.GetFloat("score");
 				levels = 10;
-			break;
+                SetNuts.speed = 3.5f;
+            break;
 		}
         
 
@@ -182,7 +192,7 @@ public class SetNuts : Nuts {
 					nextLevel.GetComponent<Button>().enabled = true;
 					
 				}
-
+                PlayerPrefs.SetInt ("lastLevel", levels);
 			}
 			else if (levels == 10) {
                 stars[0].gameObject.GetComponent<Image>().enabled = false;
@@ -191,6 +201,7 @@ public class SetNuts : Nuts {
 				nextLevel.GetComponent<Button>().interactable = false;
 				PlayerPrefs.SetInt("totalMoney", score);
 				PlayerPrefs.SetInt("levels", 10);
+                PlayerPrefs.SetInt ("lastLevel", 10);
 			}
 
 			gameOverLayout.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
