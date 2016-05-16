@@ -15,7 +15,7 @@ public class LevelSelection : MonoBehaviour {
 
 
 
-		if (PlayerPrefs.GetInt ("lastLevel") >= 1 && this.gameObject.name == "level1"){
+		if (PlayerPrefs.GetInt ("lastLevel") >= 0 && this.gameObject.name == "level1"){
 				GameObject g = GameObject.Find("level1");
 				g = this.gameObject;
 				g.GetComponent<Image>().sprite = unlockedLevel;
