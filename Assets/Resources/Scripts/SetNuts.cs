@@ -72,7 +72,7 @@ public class SetNuts : Nuts {
 				twoStar = 65;
 				threeStar = 80;
 				levels = 2;
-                SetNuts.speed = 7;  
+                SetNuts.speed = 10;  
             break;
 
 			case 3:
@@ -81,7 +81,7 @@ public class SetNuts : Nuts {
 				twoStar = 80;
 				threeStar = 90;
 				levels = 3;
-                SetNuts.speed = 9f;
+                SetNuts.speed = 15f;
             break;
 
 			case 4:
@@ -90,7 +90,7 @@ public class SetNuts : Nuts {
 				twoStar = 85;
 				threeStar = 105;
 				levels = 4;
-                SetNuts.speed = 11f;
+                SetNuts.speed = 20f;
             break;
 
 			case 5:
@@ -99,7 +99,7 @@ public class SetNuts : Nuts {
 				twoStar = 90;
 				threeStar = 110;
 				levels = 5;
-                SetNuts.speed = 13f;
+                SetNuts.speed = 25f;
             break;
 
 			case 6:
@@ -108,7 +108,7 @@ public class SetNuts : Nuts {
 				twoStar = 95;
 				threeStar = 115;
 				levels = 6;
-                SetNuts.speed = 15f;
+                SetNuts.speed = 30f;
             break;
 
 			case 7:
@@ -118,7 +118,7 @@ public class SetNuts : Nuts {
 				twoStar = 100;
 				threeStar = 120;
 				levels = 7;
-                SetNuts.speed = 17f;
+                SetNuts.speed = 35f;
             break;
 
 			case 8:
@@ -128,7 +128,7 @@ public class SetNuts : Nuts {
 				twoStar = 105;
 				threeStar = 125;
 				levels = 8;
-                SetNuts.speed = 19f;
+                SetNuts.speed = 40f;
             break;
 
 			case 9:
@@ -138,14 +138,14 @@ public class SetNuts : Nuts {
 				twoStar = 110;
 				threeStar = 130;
 				levels = 9;
-                SetNuts.speed = 21f;
+                SetNuts.speed = 45f;
             break;
 
 			case 10:
 				
 				totalMoney = PlayerPrefs.GetFloat("score");
 				levels = 10;
-                SetNuts.speed = 23f;
+                SetNuts.speed = 50f;
             break;
 		}
 
