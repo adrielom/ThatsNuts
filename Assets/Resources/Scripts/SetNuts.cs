@@ -63,7 +63,7 @@ public class SetNuts : Nuts {
 				twoStar = 60;
 				threeStar = 70;
 				levels = 1;
-                SetNuts.speed = 5;
+                speed = 2.5f;
 			break;
 
 			case 2:
@@ -72,7 +72,7 @@ public class SetNuts : Nuts {
 				twoStar = 65;
 				threeStar = 80;
 				levels = 2;
-                SetNuts.speed = 10;  
+                speed = 2.8f;  
             break;
 
 			case 3:
@@ -81,7 +81,7 @@ public class SetNuts : Nuts {
 				twoStar = 80;
 				threeStar = 90;
 				levels = 3;
-                SetNuts.speed = 15f;
+                speed = 3f;
             break;
 
 			case 4:
@@ -90,7 +90,7 @@ public class SetNuts : Nuts {
 				twoStar = 85;
 				threeStar = 105;
 				levels = 4;
-                SetNuts.speed = 20f;
+                speed = 3.5f;
             break;
 
 			case 5:
@@ -99,7 +99,7 @@ public class SetNuts : Nuts {
 				twoStar = 90;
 				threeStar = 110;
 				levels = 5;
-                SetNuts.speed = 25f;
+                speed = 4f;
             break;
 
 			case 6:
@@ -108,7 +108,7 @@ public class SetNuts : Nuts {
 				twoStar = 95;
 				threeStar = 115;
 				levels = 6;
-                SetNuts.speed = 30f;
+                speed = 4.5f;
             break;
 
 			case 7:
@@ -118,7 +118,7 @@ public class SetNuts : Nuts {
 				twoStar = 100;
 				threeStar = 120;
 				levels = 7;
-                SetNuts.speed = 35f;
+                speed = 5f;
             break;
 
 			case 8:
@@ -128,7 +128,7 @@ public class SetNuts : Nuts {
 				twoStar = 105;
 				threeStar = 125;
 				levels = 8;
-                SetNuts.speed = 40f;
+                speed = 5.5f;
             break;
 
 			case 9:
@@ -138,14 +138,14 @@ public class SetNuts : Nuts {
 				twoStar = 110;
 				threeStar = 130;
 				levels = 9;
-                SetNuts.speed = 45f;
+                speed = 6f;
             break;
 
 			case 10:
 				
 				totalMoney = PlayerPrefs.GetFloat("score");
 				levels = 10;
-                SetNuts.speed = 50f;
+                SetNuts.speed = 7f;
             break;
 		}
 

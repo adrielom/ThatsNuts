@@ -26,7 +26,6 @@ public class Nuts : MonoBehaviour {
 		audio = GetComponent<AudioSource> ();
 		anim = this.GetComponent<Animator>();
 		this.anim.enabled = false;
-        speed = 2f;
         life = 3;
         score = 0;
 
