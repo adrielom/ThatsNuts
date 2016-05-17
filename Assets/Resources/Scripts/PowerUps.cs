@@ -82,8 +82,14 @@ public class PowerUps : MonoBehaviour {
 	//Vai pra cena do jogo e aumenta o level de dificuldade
 	public void NextScene (){	
 		SetNuts.levels++;
-		PlayerPrefs.SetInt ("levels", SetNuts.levels);
-		audio.PlayOneShot (play, 1f);
+        if (PlayerPrefs.GetInt("lastLevel") != PlayerPrefs.GetInt("levels")) {
+            PlayerPrefs.SetInt ("levels", SetNuts.levels);
+        }
+        else {
+            PlayerPrefs.SetInt ("levels", SetNuts.levels);
+            PlayerPrefs.SetInt ("lastLevel", SetNuts.levels);
+        }
+        audio.PlayOneShot (play, 1f);
 		StartCoroutine (Delay("Jogo"));
 		pauseLayout.transform.position = new Vector3 (0f, 0f, -10000f);
 

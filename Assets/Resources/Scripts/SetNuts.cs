@@ -30,15 +30,11 @@ public class SetNuts : Nuts {
 	public Text clockT;
 	public Text countdownT;
 
+
 	//roda uma vez ao iniciar o jogo
-	void Start(){
+	void Start () {
+       // PlayerPrefs.DeleteAll ();
 		//inicializando cronometro, layout do pause e do gameover, que ficam em stand by, esperando serem chamados.
-		if (levels == 1){
-			PlayerPrefs.SetInt("levels", 1);
-		}
-		else{
-			levels = PlayerPrefs.GetInt ("levels");
-		}
 		countdown = 60;
 		gameOverLayout.transform.position = new Vector3(transform.position.x, transform.position.y, -10000f);
 		pauseLayout.transform.position = new Vector3 (transform.position.x, transform.position.y, -10000f);
@@ -46,9 +42,17 @@ public class SetNuts : Nuts {
 		stars[1].gameObject.GetComponent<Image>().enabled = false; 
 		stars[2].gameObject.GetComponent<Image>().enabled = false; 
 		nextLevel.GetComponent<Button>().enabled = false;
-        quantHammer = PlayerPrefs.GetInt ("quantHammer");
-        quantClock = PlayerPrefs.GetInt ("quantClock");
-        quantSpdd = PlayerPrefs.GetInt ("quantSpdd");
+        if (PlayerPrefs.GetInt("lastLevel") < 1) {
+            PlayerPrefs.SetInt ("quantHammer", 3);
+            PlayerPrefs.SetInt ("quantClock", 3);
+            PlayerPrefs.SetInt ("quantSpdd", 3);
+        }
+        else if (PlayerPrefs.GetInt ("lastLevel") >= 2) {
+            quantHammer = PlayerPrefs.GetInt ("quantHammer");
+            quantClock = PlayerPrefs.GetInt ("quantClock");
+            quantSpdd = PlayerPrefs.GetInt ("quantSpdd");
+        }
+       
 
 		//seleçao de level
 		switch (levels) {
@@ -58,7 +62,7 @@ public class SetNuts : Nuts {
 				twoStar = 60;
 				threeStar = 70;
 				levels = 1;
-                SetNuts.speed = 2;
+                SetNuts.speed = 5;
 			break;
 
 			case 2:
@@ -67,7 +71,7 @@ public class SetNuts : Nuts {
 				twoStar = 65;
 				threeStar = 80;
 				levels = 2;
-                SetNuts.speed = 3;  
+                SetNuts.speed = 7;  
             break;
 
 			case 3:
@@ -76,7 +80,7 @@ public class SetNuts : Nuts {
 				twoStar = 80;
 				threeStar = 90;
 				levels = 3;
-                SetNuts.speed = 4f;
+                SetNuts.speed = 9f;
             break;
 
 			case 4:
@@ -85,7 +89,7 @@ public class SetNuts : Nuts {
 				twoStar = 85;
 				threeStar = 105;
 				levels = 4;
-                SetNuts.speed = 5f;
+                SetNuts.speed = 11f;
             break;
 
 			case 5:
@@ -94,7 +98,7 @@ public class SetNuts : Nuts {
 				twoStar = 90;
 				threeStar = 110;
 				levels = 5;
-                SetNuts.speed = 6f;
+                SetNuts.speed = 13f;
             break;
 
 			case 6:
@@ -103,7 +107,7 @@ public class SetNuts : Nuts {
 				twoStar = 95;
 				threeStar = 115;
 				levels = 6;
-                SetNuts.speed = 7f;
+                SetNuts.speed = 15f;
             break;
 
 			case 7:
@@ -113,7 +117,7 @@ public class SetNuts : Nuts {
 				twoStar = 100;
 				threeStar = 120;
 				levels = 7;
-                SetNuts.speed = 8f;
+                SetNuts.speed = 17f;
             break;
 
 			case 8:
@@ -123,7 +127,7 @@ public class SetNuts : Nuts {
 				twoStar = 105;
 				threeStar = 125;
 				levels = 8;
-                SetNuts.speed = 9f;
+                SetNuts.speed = 19f;
             break;
 
 			case 9:
@@ -133,27 +137,27 @@ public class SetNuts : Nuts {
 				twoStar = 110;
 				threeStar = 130;
 				levels = 9;
-                SetNuts.speed = 10f;
+                SetNuts.speed = 21f;
             break;
 
 			case 10:
 				
 				totalMoney = PlayerPrefs.GetFloat("score");
 				levels = 10;
-                SetNuts.speed = 12f;
+                SetNuts.speed = 23f;
             break;
 		}
-        
 
-        PlayerPrefs.SetInt ("levels", levels);	
-	}
+        PlayerPrefs.SetInt ("levels", levels);
+
+    }
 
 	//Chamado a cada frame
     void FixedUpdate () {
 
-		//coloca o hud na tela, atualiza o tempo do jogo
+        //coloca o hud na tela, atualiza o tempo do jogo
 
-
+        score = 200;
 
 		if (levels > 9) {
 			countdownT.text = "∞";
@@ -195,8 +199,17 @@ public class SetNuts : Nuts {
 					nextLevel.GetComponent<Button>().enabled = true;
 					
 				}
-                PlayerPrefs.SetInt ("lastLevel", levels);
-			}
+               
+                if (PlayerPrefs.GetInt ("lastLevel") == PlayerPrefs.GetInt ("levels")) {
+                    PlayerPrefs.SetInt ("lastLevel", levels);
+                    PlayerPrefs.SetInt ("levels", levels);
+                }
+                else {
+                    PlayerPrefs.SetInt ("levels", levels);
+                }
+                print ("level" + PlayerPrefs.GetInt("levels"));
+                print ("last" + PlayerPrefs.GetInt ("lastLevel"));
+            }
 			else if (levels == 10) {
                 stars[0].gameObject.GetComponent<Image>().enabled = false;
 				stars[1].gameObject.GetComponent<Image>().enabled = false; 
@@ -205,12 +218,13 @@ public class SetNuts : Nuts {
 				PlayerPrefs.SetInt("totalMoney", score);
 				PlayerPrefs.SetInt("levels", 10);
                 PlayerPrefs.SetInt ("lastLevel", 10);
-                PlayerPrefs.SetInt ("quantHammer", quantHammer);
-                PlayerPrefs.SetInt ("quantClock", quantClock);
-                PlayerPrefs.SetInt ("quantSpdd", quantSpdd);
+                print (PlayerPrefs.GetInt ("levels"));
+                print (PlayerPrefs.GetInt ("lastLevel"));
             }
-
-			gameOverLayout.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
+            PlayerPrefs.SetInt ("quantHammer", quantHammer);
+            PlayerPrefs.SetInt ("quantClock", quantClock);
+            PlayerPrefs.SetInt ("quantSpdd", quantSpdd);
+            gameOverLayout.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
 		}
 
 		//se as vidas ou o tempo nao forem 0
