@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class SetNuts : Nuts {
 
     //declaraçao de variaveis
-    int lastLevel;
+    int lastLevel = 1;
     public GameObject[] nuts;
 	public GameObject[] stars;
 	public GameObject gameOverLayout;
@@ -33,7 +33,7 @@ public class SetNuts : Nuts {
 
 	//roda uma vez ao iniciar o jogo
 	void Start () {
-       // PlayerPrefs.DeleteAll ();
+       
 		//inicializando cronometro, layout do pause e do gameover, que ficam em stand by, esperando serem chamados.
 		countdown = 60;
 		gameOverLayout.transform.position = new Vector3(transform.position.x, transform.position.y, -10000f);
@@ -46,6 +46,7 @@ public class SetNuts : Nuts {
             PlayerPrefs.SetInt ("quantHammer", 3);
             PlayerPrefs.SetInt ("quantClock", 3);
             PlayerPrefs.SetInt ("quantSpdd", 3);
+            PlayerPrefs.SetInt ("lastLevel", 1);
         }
         else if (PlayerPrefs.GetInt ("lastLevel") >= 2) {
             quantHammer = PlayerPrefs.GetInt ("quantHammer");
@@ -156,8 +157,6 @@ public class SetNuts : Nuts {
     void FixedUpdate () {
 
         //coloca o hud na tela, atualiza o tempo do jogo
-
-        score = 200;
 
 		if (levels > 9) {
 			countdownT.text = "∞";
