@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class SetNuts : Nuts {
 
     //declaraçao de variaveis
+    float vel;
     int lastLevel = 1;
     public GameObject[] nuts;
 	public GameObject[] stars;
@@ -33,8 +34,8 @@ public class SetNuts : Nuts {
 
 	//roda uma vez ao iniciar o jogo
 	void Start () {
-       
-		//inicializando cronometro, layout do pause e do gameover, que ficam em stand by, esperando serem chamados.
+
+        //inicializando cronometro, layout do pause e do gameover, que ficam em stand by, esperando serem chamados.
 		countdown = 60;
 		gameOverLayout.transform.position = new Vector3(transform.position.x, transform.position.y, -10000f);
 		pauseLayout.transform.position = new Vector3 (transform.position.x, transform.position.y, -10000f);
@@ -255,18 +256,22 @@ public class SetNuts : Nuts {
 			{
 
 				timer -= Time.deltaTime;
-
-				if (timer >= 0){
-					Nuts.speed = 1;
-				}
-				else{
-					Nuts.speed = 1.5f;
+                
+				if (timer >= 0 ){
+                    if (speed != 1f) {
+                        PlayerPrefs.SetFloat ("vel", speed);
+                    }
+                    Nuts.speed = 1;
+                    print (PlayerPrefs.GetFloat("vel"));
+                }
+                else {
+					
 					quantSpdd--;
-
-					PowerUps.spddBool = false;
+                    speed = PlayerPrefs.GetFloat("vel");
+                    PowerUps.spddBool = false;
 					audio.PlayOneShot(sounds[5], 1f);
-				}
-			
+                }
+                
 			//power up do boost de tempo
 			}
 			if ((PowerUps.clockBool == true) && (quantClock > 0)){
