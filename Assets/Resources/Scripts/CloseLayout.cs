@@ -9,4 +9,6 @@ public class CloseLayout : MonoBehaviour {
         b.Initialize ();
         b.CloseBonus ();
     }
+
+
 }

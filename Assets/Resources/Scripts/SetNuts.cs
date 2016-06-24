@@ -236,10 +236,9 @@ public class SetNuts : Nuts {
             countdownTime = SimpleTimer(randT);
 
 			//se a posiçao for acima da tela, randomiza as sprites das nozes e da uma tag pra noz
-            if (((nuts[rand].transform.position.y >= 6f) && countdownTime < 0))
+            if (((nuts[rand].transform.position.y >= 7.5f) && countdownTime < 0) && tagORight == true)
             {
 				countdownTime = randT;
-				RandomizeSprites (nuts[rand]);
 				IsGoodOrBad (nuts[rand]);
 
             }
@@ -323,44 +322,24 @@ public class SetNuts : Nuts {
 	}
     
 	//um valor aleatorio e escolhido e dai sao escolhidas as sprites do objeto
-	public void RandomizeSprites(GameObject rg) {
-		int nt = Random.Range (0,5);
+	public void IsGoodOrBad(GameObject rg) {
+		int nt = Random.Range (0,4);
 		switch (nt) {
 
 			case 0:
-				rg.gameObject.GetComponent<SpriteRenderer>().sprite = whiteSprite;
+              rg.gameObject.tag = "GoodFall";
 			break;
 			case 1:
-				rg.gameObject.GetComponent<SpriteRenderer>().sprite = goldenSprite;
-			break;
+              rg.gameObject.tag = "BadFall";
+            break;
 			case 2:
-				rg.gameObject.GetComponent<SpriteRenderer>().sprite = darkSprite;
-			break;
+              rg.gameObject.tag = "GoldFall";
+            break;
 			case 3:
-				rg.gameObject.GetComponent<SpriteRenderer>().sprite = whiteSprite;
-			break;
-			case 4:
-				rg.gameObject.GetComponent<SpriteRenderer>().sprite = whiteSprite;
-			break;
+               rg.gameObject.tag = "GoodFall";
+            break;
 		}
-
+        tagORight = false;
 	}
 
-	//checa qual sprite o objeto tem e da uma tag apropriada
-	public void IsGoodOrBad(GameObject nt)
-	{
-		if (nt.gameObject.GetComponent<SpriteRenderer>().sprite == whiteSprite){
-			nt.gameObject.tag = "GoodFall";
-		}
-		else if (nt.gameObject.GetComponent<SpriteRenderer>().sprite == darkSprite){
-			nt.gameObject.tag = "BadFall";
-		}
-		else if (nt.gameObject.GetComponent<SpriteRenderer>().sprite == goldenSprite){
-			nt.gameObject.tag = "GoldFall";
-		}
-
-
-	}
-
-	
 }

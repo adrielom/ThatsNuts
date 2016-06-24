@@ -17,21 +17,18 @@ public class Ads : MonoBehaviour {
     void Awake () {
         b.Initialize ();
         Advertisement.Initialize (IDAdds, true);
-	}
-
-    void Start () {
         gR = GameObject.Find ("Canvas/GameOverHUD/BONUSLAYOUT/Bonus");
         g = GameObject.Find ("Canvas/GameOverHUD/BONUSLAYOUT/BonusPowerUp");
         rand = g.GetComponent<Animator> ();
         bonus = gR.GetComponent<Animator> ();
         rand.enabled = true;
         bonus.enabled = true;
+     
+    }
+
+    public void ShowAd () {
         rand.SetBool ("canGo", false);
         bonus.SetBool ("GoOn", false);
-    }
-	
-    public void ShowAd () {
-
         ShowOptions options = new ShowOptions ();
         options.resultCallback = AdCallbackHandler;
 
@@ -69,8 +66,7 @@ public class Ads : MonoBehaviour {
 
 
     IEnumerator WaitAnimation (Sprite s) {
-        yield return new WaitForSeconds (1f);
-        rand.enabled = false;
+        yield return new WaitForSeconds (0.1f);
         g.gameObject.GetComponent<Image> ().sprite = s;
 
     }
