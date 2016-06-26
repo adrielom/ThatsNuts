@@ -40,8 +40,7 @@ public class Ads : MonoBehaviour {
     void AdCallbackHandler (ShowResult result) {
 
         b.CallBonus ();
-        bonus.SetBool ("GoOn", true);
-        rand.SetBool ("canGo", true);
+        StartCoroutine (DelayAnimation ());
 
         switch (result) {
             case ShowResult.Finished:
@@ -69,5 +68,12 @@ public class Ads : MonoBehaviour {
         yield return new WaitForSeconds (0.1f);
         g.gameObject.GetComponent<Image> ().sprite = s;
 
+    }
+
+    IEnumerator DelayAnimation () {
+        yield return new WaitForSeconds (0.1f);
+        bonus.SetBool ("GoOn", true);
+        yield return new WaitForSeconds (0.3f);
+        rand.SetBool ("canGo", true);
     }
 }
