@@ -12,8 +12,8 @@ public class Ads : MonoBehaviour {
     Animator bonus;
     GameObject g;
     GameObject gR;
-    public Sprite[] s;
-    
+    int a;
+
     void Awake () {
         b.Initialize ();
         Advertisement.Initialize (IDAdds, true);
@@ -23,7 +23,7 @@ public class Ads : MonoBehaviour {
         bonus = gR.GetComponent<Animator> ();
         rand.enabled = true;
         bonus.enabled = true;
-     
+        a = Random.Range (0, 3);
     }
 
     public void ShowAd () {
@@ -31,7 +31,7 @@ public class Ads : MonoBehaviour {
         bonus.SetBool ("GoOn", false);
         ShowOptions options = new ShowOptions ();
         options.resultCallback = AdCallbackHandler;
-
+        a = Random.Range (0, 3);
         if (Advertisement.IsReady("rewardedVideoZone")) {
             Advertisement.Show ("rewardedVideoZone", options);
         }
@@ -40,40 +40,49 @@ public class Ads : MonoBehaviour {
     void AdCallbackHandler (ShowResult result) {
 
         b.CallBonus ();
-        StartCoroutine (DelayAnimation ());
+       
 
         switch (result) {
             case ShowResult.Finished:
-                int a =  Random.Range (0, 3);
-                if (a == 0) {
-                    StartCoroutine (WaitAnimation (s[0]));
-                    SetNuts.quantHammer++;
-                }
-                else if (a == 1) {
-                    StartCoroutine (WaitAnimation (s[1]));
-                    SetNuts.quantClock++;
-                }
-                else if (a == 2) {
-                    StartCoroutine (WaitAnimation (s[2]));
-                    SetNuts.quantSpdd++;
-                }
-
+               
+                g.GetComponent<Image> ().enabled = true;
+                gR.GetComponent<Image> ().enabled = true;
+                print ("HEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEY");
+                StartCoroutine (WaitAnimation ());
+               
             break;
 
         }
     }
 
 
-    IEnumerator WaitAnimation (Sprite s) {
-        yield return new WaitForSeconds (0.1f);
-        g.gameObject.GetComponent<Image> ().sprite = s;
+    IEnumerator WaitAnimation () {
 
-    }
+       
+        switch (a) {
+            case 0:
+                 SetNuts.quantHammer++;
 
-    IEnumerator DelayAnimation () {
-        yield return new WaitForSeconds (0.1f);
+            break;
+
+            case 1:
+                SetNuts.quantClock++;
+
+            break;
+
+            case 2:
+                SetNuts.quantSpdd++;
+            break;
+
+        }
+        rand.SetInteger ("powerUpPos", a);
+        print ("YAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + a);
         bonus.SetBool ("GoOn", true);
-        yield return new WaitForSeconds (0.3f);
         rand.SetBool ("canGo", true);
+
+        yield return new WaitForSeconds (0.1f);
+
     }
+
+
 }

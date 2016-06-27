@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CloseLayout : MonoBehaviour {
 
@@ -17,12 +18,14 @@ public class CloseLayout : MonoBehaviour {
     }
 
     public void ExitLayout () {
-        rand.enabled = false;
-        bonus.enabled = false;
+        g.GetComponent<Image> ().enabled = false;
+        gR.GetComponent<Image> ().enabled = false;
+        rand.SetBool ("canGo", false);
+        bonus.SetBool ("GoOn", false);
+       
         b.Initialize ();
         b.CloseBonus ();
-
     }
-    
+
 
 }

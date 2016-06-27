@@ -34,6 +34,6 @@ public class LevelSelectionsButtons : MonoBehaviour {
 
 	IEnumerator Delay(string s){
 		yield return new WaitForSeconds (0.4f);
-		Application.LoadLevel (s);
+        Application.LoadLevel (s);
 	}
 }

@@ -207,8 +207,7 @@ public class SetNuts : Nuts {
                 else {
                     PlayerPrefs.SetInt ("levels", levels);
                 }
-                print ("level" + PlayerPrefs.GetInt("levels"));
-                print ("last" + PlayerPrefs.GetInt ("lastLevel"));
+               
             }
 			else if (levels == 10) {
                 stars[0].gameObject.GetComponent<Image>().enabled = false;

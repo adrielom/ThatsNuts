@@ -11,6 +11,7 @@ public class LevelSelection : MonoBehaviour {
 
 	}
 
+   
 	public void SettingSprites (){
 
 
@@ -77,6 +78,7 @@ public class LevelSelection : MonoBehaviour {
 
 	}
 
+
 	public void LoadLevel1 (){
         if (PlayerPrefs.GetInt ("lastLevel") >= 1 || SetNuts.levels >= 1) {
             SetNuts.levels = 1;
@@ -87,14 +89,14 @@ public class LevelSelection : MonoBehaviour {
 	public void LoadLevel2 (){
 		if (PlayerPrefs.GetInt ("lastLevel") >= 2) {
 			SetNuts.levels = 2;
-			Application.LoadLevel ("Jogo");
+            Application.LoadLevel ("Jogo");
 		}
 		
 	}
 	public void LoadLevel3 (){
 		if (PlayerPrefs.GetInt ("lastLevel") >= 3) {
 			SetNuts.levels = 3;
-			Application.LoadLevel ("Jogo");
+            Application.LoadLevel ("Jogo");
 		}
 		
 	}
@@ -114,8 +116,8 @@ public class LevelSelection : MonoBehaviour {
 	}
 	public void LoadLevel6 (){
 		if (PlayerPrefs.GetInt ("lastLevel") >= 6) {
-            SetNuts.levels = 6; 
-			Application.LoadLevel ("Jogo");
+            SetNuts.levels = 6;
+            Application.LoadLevel ("Jogo");
 		}
 		
 	}
@@ -148,5 +150,6 @@ public class LevelSelection : MonoBehaviour {
 		
 	}
 
+    
 
 }
