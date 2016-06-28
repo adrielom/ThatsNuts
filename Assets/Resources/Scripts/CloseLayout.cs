@@ -11,8 +11,8 @@ public class CloseLayout : MonoBehaviour {
     GameObject gR;
 
     void Start () {
-        gR = GameObject.Find ("Canvas/GameOverHUD/BONUSLAYOUT/Bonus");
-        g = GameObject.Find ("Canvas/GameOverHUD/BONUSLAYOUT/BonusPowerUp");
+        gR = GameObject.Find ("Canvas - HUD/GameOverHUD/BONUSLAYOUT/Bonus");
+        g = GameObject.Find ("Canvas - HUD/GameOverHUD/BONUSLAYOUT/BonusPowerUp");
         rand = g.GetComponent<Animator> ();
         bonus = gR.GetComponent<Animator> ();
     }

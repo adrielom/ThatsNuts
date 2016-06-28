@@ -269,7 +269,7 @@ public class SetNuts : Nuts {
                     print (PlayerPrefs.GetFloat("vel"));
                 }
                 else {
-					
+                    timer = 10f;
 					quantSpdd--;
                     speed = PlayerPrefs.GetFloat("vel");
                     PowerUps.spddBool = false;

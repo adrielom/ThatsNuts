@@ -5,7 +5,7 @@ public class BgImage : MonoBehaviour {
 
 	public Sprite[] bg;
 
-	void Awake (){
+	void Start (){
 		SettingSpritesBg ();
 		
 	}
@@ -52,6 +52,7 @@ public class BgImage : MonoBehaviour {
 		if (SetNuts.levels == 10){
 			gameObject.GetComponent<Image> ().sprite = bg[9];
 		}
+
 
 	}
 }
