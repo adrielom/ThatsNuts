@@ -30,10 +30,13 @@ public class SetNuts : Nuts {
     public Text scores;
 	public Text clockT;
 	public Text countdownT;
+    Animator goLayout;
 
+    //roda uma vez ao iniciar o jogo
+    void Start () {
 
-	//roda uma vez ao iniciar o jogo
-	void Start () {
+        GameObject gameOverLayout = GameObject.Find ("GameOverHUD");
+        goLayout = gameOverLayout.GetComponent<Animator> (); 
 
         //inicializando cronometro, layout do pause e do gameover, que ficam em stand by, esperando serem chamados.
 		countdown = 60;
@@ -179,7 +182,7 @@ public class SetNuts : Nuts {
 			//limpa a tela, zera o cronometro, para as nozes, calcula o total de pontos e chama as estrelas de pontuaçao.
 			countdown = 0;
 			ClearScreen();
-			speed = 0;
+            speed = 0;
 			if (levels < 10){
 				totalMoney = score - demand;
                 if (Nuts.score >= threeStar ){
@@ -199,7 +202,7 @@ public class SetNuts : Nuts {
 					nextLevel.GetComponent<Button>().enabled = true;
 					
 				}
-               
+
                 if (PlayerPrefs.GetInt ("lastLevel") == PlayerPrefs.GetInt ("levels")) {
                     PlayerPrefs.SetInt ("lastLevel", levels);
                     PlayerPrefs.SetInt ("levels", levels);
@@ -223,8 +226,11 @@ public class SetNuts : Nuts {
             PlayerPrefs.SetInt ("quantHammer", quantHammer);
             PlayerPrefs.SetInt ("quantClock", quantClock);
             PlayerPrefs.SetInt ("quantSpdd", quantSpdd);
+            goLayout.SetBool ("gameOver", true);
             gameOverLayout.transform.position = new Vector3(transform.position.x, transform.position.y, 0f);
-		}
+            
+
+        }
 
 		//se as vidas ou o tempo nao forem 0
         else
