@@ -17,8 +17,8 @@ public class Ads : MonoBehaviour {
     void Awake () {
         b.Initialize ();
         Advertisement.Initialize (IDAdds, true);
-        gR = GameObject.Find ("Canvas/GameOverHUD/BONUSLAYOUT/Bonus");
-        g = GameObject.Find ("Canvas/GameOverHUD/BONUSLAYOUT/BonusPowerUp");
+        gR = GameObject.Find ("Canvas - HUD/GameOverHUD/BONUSLAYOUT/Bonus");
+        g = GameObject.Find ("Canvas - HUD/GameOverHUD/BONUSLAYOUT/BonusPowerUp");
         rand = g.GetComponent<Animator> ();
         bonus = gR.GetComponent<Animator> ();
         rand.enabled = true;
