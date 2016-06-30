@@ -10,6 +10,10 @@ public class BgImage : MonoBehaviour {
 		
 	}
 	
+    void Update () {
+        SettingSpritesBg ();
+    }
+
 	public void SettingSpritesBg (){
 
 		if (SetNuts.levels == 1){
