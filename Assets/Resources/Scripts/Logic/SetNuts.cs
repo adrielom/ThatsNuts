@@ -1,10 +1,17 @@
 ﻿using UnityEngine;
+using System.Collections;
 using UnityEngine.UI;
 
 public class SetNuts : Nuts {
 
     //declaraçao de variaveis
     float vel;
+    public Button frozenNut;
+    public Image bgFrozenNut;
+    public float frozenNutTimer = 15;
+    public Text frozenNutTimerT;
+    public Text frozenNutQuantT;
+    public bool frozenNutBool = false;
     int lastLevel = 1;
     public GameObject[] nuts;
 	public GameObject[] stars;
@@ -57,7 +64,13 @@ public class SetNuts : Nuts {
             quantClock = PlayerPrefs.GetInt ("quantClock");
             quantSpdd = PlayerPrefs.GetInt ("quantSpdd");
         }
-       
+
+
+        frozenNut.enabled = false;
+        frozenNut.image.enabled = false;
+        frozenNutTimerT.enabled = false;
+        bgFrozenNut.enabled = false;
+        frozenNutQuantT.enabled = false;
 
 		//seleçao de level
 		switch (levels) {
@@ -146,15 +159,32 @@ public class SetNuts : Nuts {
             break;
 
 			case 10:
-				
+                StartCoroutine (FrozenNutEnum (frozenNutTimer));
+                SetNuts.speed = 0;
+                frozenNut.enabled = true;
+                frozenNut.image.enabled = true;
+                frozenNutTimerT.enabled = true;
+                bgFrozenNut.enabled = true;
+                frozenNutQuantT.enabled = true;
 				totalMoney = PlayerPrefs.GetFloat("score");
 				levels = 10;
-                SetNuts.speed = 7f;
+                frozenNutBool = true;
             break;
 		}
 
         PlayerPrefs.SetInt ("levels", levels);
 
+    }
+
+    IEnumerator FrozenNutEnum (float t) {
+        yield return new WaitForSeconds (t);
+        frozenNutTimerT.enabled = false;
+        frozenNut.enabled = false;
+        frozenNut.image.enabled = false;
+        frozenNutBool = false;
+        bgFrozenNut.enabled = false;
+        frozenNutQuantT.enabled = false;
+        SetNuts.speed = 5f;
     }
 
 	//Chamado a cada frame
@@ -164,8 +194,14 @@ public class SetNuts : Nuts {
 
 		if (levels > 9) {
 			countdownT.text = "∞";
-		} 
-		else {
+		}
+
+        if (frozenNutBool == true) {
+            frozenNutTimerT.text = frozenNutTimer.ToString ("F0");
+            frozenNutQuantT.text = FrozenNut.quantFrozenNuts.ToString ();
+            frozenNutTimer -= Time.deltaTime;
+        }
+        else {
 			countdownT.text = countdown.ToString ("F1");
 			countdown -= Time.deltaTime;
 

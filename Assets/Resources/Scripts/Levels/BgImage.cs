@@ -5,13 +5,18 @@ public class BgImage : MonoBehaviour {
 
 	public Sprite[] bg;
 
-	void Start (){
-		SettingSpritesBg ();
-		
-	}
+	void Awake (){
+        if (gameObject.GetComponent<Image> ().sprite == null) {
+            SettingSpritesBg ();
+
+        }
+    }
 	
     void Update () {
-        SettingSpritesBg ();
+        if (gameObject.GetComponent<Image> ().sprite == null) {
+            SettingSpritesBg ();
+
+        }
     }
 
 	public void SettingSpritesBg (){
