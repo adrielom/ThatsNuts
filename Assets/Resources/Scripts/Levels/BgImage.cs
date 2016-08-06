@@ -4,16 +4,18 @@ using UnityEngine.UI;
 public class BgImage : MonoBehaviour {
 
 	public Sprite[] bg;
+    GameObject background;
 
-	void Awake (){
-        if (gameObject.GetComponent<Image> ().sprite == null) {
+    void Start (){
+        background = GameObject.Find ("Bg");
+        if (background.GetComponent<Image> ().sprite == null) {
             SettingSpritesBg ();
 
         }
     }
 	
     void Update () {
-        if (gameObject.GetComponent<Image> ().sprite == null) {
+        if (background.GetComponent<Image> ().sprite == null) {
             SettingSpritesBg ();
 
         }
@@ -62,6 +64,6 @@ public class BgImage : MonoBehaviour {
 			gameObject.GetComponent<Image> ().sprite = bg[9];
 		}
 
-
+        print (gameObject.GetComponent<Image> ().sprite);
 	}
 }

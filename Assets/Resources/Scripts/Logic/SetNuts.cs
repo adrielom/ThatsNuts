@@ -159,16 +159,19 @@ public class SetNuts : Nuts {
             break;
 
 			case 10:
-                StartCoroutine (FrozenNutEnum (frozenNutTimer));
-                SetNuts.speed = 0;
-                frozenNut.enabled = true;
-                frozenNut.image.enabled = true;
-                frozenNutTimerT.enabled = true;
-                bgFrozenNut.enabled = true;
-                frozenNutQuantT.enabled = true;
-				totalMoney = PlayerPrefs.GetFloat("score");
+                int ran = Random.Range (0, 3);
+                if (ran == 1) {
+                    StartCoroutine (FrozenNutEnum (frozenNutTimer));
+                    SetNuts.speed = 0;
+                    frozenNut.enabled = true;
+                    frozenNut.image.enabled = true;
+                    frozenNutTimerT.enabled = true;
+                    bgFrozenNut.enabled = true;
+                    frozenNutQuantT.enabled = true;
+                    frozenNutBool = true;
+                 }
+                totalMoney = PlayerPrefs.GetFloat("score");
 				levels = 10;
-                frozenNutBool = true;
             break;
 		}
 
