@@ -13,6 +13,8 @@ public class Nuts : MonoBehaviour {
 	public AudioSource audio;
     bool mayFall;
     public static bool tagORight;
+    string[] tags = new string[4] {"GoodFall", "BadFall", "GoldFall", "GoodFall" }
+;
 
 	//inicializaçao das variaveis
     void Start () {
@@ -79,21 +81,19 @@ public class Nuts : MonoBehaviour {
         }
 
         //checando se saiu da tela
-        if ((transform.position.y < -5.5f))
-        {
-			//diminuindo a vida, caso seja uma noz boa
-            if(gameObject.tag == "GoodFall") {
+        if ((transform.position.y < -5.5f)) {
+            //diminuindo a vida, caso seja uma noz boa
+            if (gameObject.tag == "GoodFall") {
                 life--;
             }
 
-			//Se for uma noz dourada, da duas vidas pra noz dourada e inicializa numa posiçao aleatoria acima da tela
-            if ((gameObject.tag == "GoldFall"))
-            {
+            //Se for uma noz dourada, da duas vidas pra noz dourada e inicializa numa posiçao aleatoria acima da tela
+            if ((gameObject.tag == "GoldFall")) {
                 goldLife = 2;
             }
             transform.position = new Vector2 (transform.position.x, Random.Range (7.5f, 8f));
 
-            this.gameObject.tag = "GoodStatic";
+            this.gameObject.tag = tags[Random.Range (0, tags.Length)];
 
         }
 
