@@ -148,27 +148,27 @@ public class Nuts : MonoBehaviour {
 
 
 	IEnumerator DelayGood(){
-		yield return new WaitForSeconds (.5f);
+		yield return new WaitForSeconds (.1f);
         this.gameObject.tag = "GoodStatic";
         this.gameObject.transform.position = new Vector2 (transform.position.x, Random.Range (7.5f, 8f));
-        yield return new WaitForSeconds (.5f);
+        yield return new WaitForSeconds (.1f);
     }
 
 	//Espera .15s e leva a noz ruim la pra cima
 	IEnumerator DelayBad(){
-        yield return new WaitForSeconds (.5f);
+        yield return new WaitForSeconds (.1f);
         this.gameObject.tag = "GoodStatic";
         this.gameObject.transform.position = new Vector2 (transform.position.x, Random.Range (7.5f, 8f));
-        yield return new WaitForSeconds (.5f);
+        yield return new WaitForSeconds (.1f);
     }
 
 	//Espera .15s e leva a noz dourada la pra cima
 	IEnumerator DelayGolden(){
-        yield return new WaitForSeconds (.5f);
+        yield return new WaitForSeconds (.1f);
         goldLife = 2;
         this.gameObject.tag = "GoodStatic";
         this.transform.position = new Vector2 (transform.position.x, Random.Range (7.5f, 8f));
-        yield return new WaitForSeconds (.5f);
+        yield return new WaitForSeconds (.1f);
     }
 	
 }
