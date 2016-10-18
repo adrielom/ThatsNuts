@@ -45,7 +45,7 @@ public class Nuts : MonoBehaviour {
 
             if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Noz") || anim.GetCurrentAnimatorStateInfo (0).IsName ("DarkNoz") || anim.GetCurrentAnimatorStateInfo (0).IsName ("IdleGoldRachada") || anim.GetCurrentAnimatorStateInfo (0).IsName ("GoldenNoz")) {
                 this.gameObject.tag = "GoodStatic";
-                transform.position = new Vector2 (transform.position.x, Random.Range (7.5f, 8f));
+                transform.position = new Vector2 (transform.position.x, Random.Range (8f, 8.5f));
 
             }
 
