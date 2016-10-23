@@ -13,7 +13,7 @@ public class Nuts : MonoBehaviour {
 	public AudioSource audio;
     bool mayFall;
     public static bool tagORight;
-    string[] tags = new string[4] {"GoodFall", "BadFall", "GoldFall", "GoodFall" }
+    string[] tags = new string[4] {"GoodFall", "BadFall", "GoodFall", "GoldFall" }
 ;
 
 	//inicializaçao das variaveis
@@ -92,10 +92,11 @@ public class Nuts : MonoBehaviour {
             if ((gameObject.tag == "GoldFall")) {
                 goldLife = 2;
             }
-            transform.position = new Vector2 (transform.position.x, Random.Range (7.5f, 8f));
-            ResetAnim ();
             this.gameObject.tag = tags[Random.Range (0, tags.Length)];
+            ResetAnim ();
 
+            this.gameObject.transform.position = new Vector2 (transform.position.x, Random.Range (7f, 8f));
+            anim.Play ("Blank");
         }
 
     }
@@ -142,6 +143,7 @@ public class Nuts : MonoBehaviour {
                 mayFall = false;
                 StartCoroutine (DelayGolden());
 				audio.PlayOneShot(sounds[3], 0.3f);
+
             }    
         }
 
@@ -149,27 +151,42 @@ public class Nuts : MonoBehaviour {
 
 
 	IEnumerator DelayGood(){
+
         yield return new WaitForSeconds (0.5f);
+
         this.gameObject.tag = tags[Random.Range (0, tags.Length)];
         ResetAnim ();
+        anim.Play ("Blank");
+
         this.gameObject.transform.position = new Vector2 (transform.position.x, Random.Range (7f, 8f));
+        yield return new WaitForSeconds (0.5f);
+
     }
 
-	//Espera .15s e leva a noz ruim la pra cima
-	IEnumerator DelayBad(){
+    //Espera .15s e leva a noz ruim la pra cima
+    IEnumerator DelayBad(){
         yield return new WaitForSeconds (0.5f);
+
         this.gameObject.tag = tags[Random.Range (0, tags.Length)];
         ResetAnim ();
+        anim.Play ("Blank");
+
         this.gameObject.transform.position = new Vector2 (transform.position.x, Random.Range (7f, 8f));
+        yield return new WaitForSeconds (0.5f);
+
     }
 
-	//Espera .15s e leva a noz dourada la pra cima
-	IEnumerator DelayGolden(){
+    //Espera .15s e leva a noz dourada la pra cima
+    IEnumerator DelayGolden(){
         yield return new WaitForSeconds (0.5f);
+        ResetAnim ();
+        anim.Play ("Blank");
+
         goldLife = 2;
-        this.gameObject.tag = tags[Random.Range (0, tags.Length)];
-        ResetAnim ();
+        this.gameObject.tag = tags[Random.Range (0, tags.Length-1)];
         this.transform.position = new Vector2 (transform.position.x, Random.Range (7f, 8f));
+        yield return new WaitForSeconds (0.5f);
+
     }
-	
+
 }

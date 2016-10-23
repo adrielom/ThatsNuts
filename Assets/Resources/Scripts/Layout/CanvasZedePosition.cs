@@ -3,14 +3,15 @@ using System.Collections;
 
 public class CanvasZedePosition : MonoBehaviour {
 
-    Vector3 pos;
+    RectTransform pos;
 
     void Start () {
-        pos = Vector3.zero;
+        pos = GetComponent<RectTransform>();
     }
 
 	void Update () {
+        pos.localPosition = Vector3.zero;
 
-        transform.position = pos;
-	}
+
+    }
 }
