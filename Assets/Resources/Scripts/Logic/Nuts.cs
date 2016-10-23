@@ -29,6 +29,13 @@ public class Nuts : MonoBehaviour {
         score = 0;
     }
 
+    public void ResetAnim () {
+        anim.SetInteger ("clicked", 0);
+        anim.SetBool ("isGood", false);
+        anim.SetBool ("isGolden", false);
+        anim.SetBool ("isBad", false);
+    }
+
  	//logica do jogo em tempo real
     void FixedUpdate() {
 
@@ -41,13 +48,7 @@ public class Nuts : MonoBehaviour {
             tagORight = true;
         }
 
-        if (transform.position.y >= 6.5f) { 
-
-            if (anim.GetCurrentAnimatorStateInfo (0).IsName ("Noz") || anim.GetCurrentAnimatorStateInfo (0).IsName ("DarkNoz") || anim.GetCurrentAnimatorStateInfo (0).IsName ("IdleGoldRachada") || anim.GetCurrentAnimatorStateInfo (0).IsName ("GoldenNoz")) {
-                this.gameObject.tag = "GoodStatic";
-                transform.position = new Vector2 (transform.position.x, Random.Range (8f, 8.5f));
-
-            }
+        if (transform.position.y >= 7f) { 
 
             if (this.gameObject.tag == "GoodFall") {
                 anim.SetBool ("isGood", true);
@@ -92,7 +93,7 @@ public class Nuts : MonoBehaviour {
                 goldLife = 2;
             }
             transform.position = new Vector2 (transform.position.x, Random.Range (7.5f, 8f));
-
+            ResetAnim ();
             this.gameObject.tag = tags[Random.Range (0, tags.Length)];
 
         }
@@ -148,27 +149,27 @@ public class Nuts : MonoBehaviour {
 
 
 	IEnumerator DelayGood(){
-		yield return new WaitForSeconds (.1f);
-        this.gameObject.tag = "GoodStatic";
-        this.gameObject.transform.position = new Vector2 (transform.position.x, Random.Range (7.5f, 8f));
-        yield return new WaitForSeconds (.1f);
+        yield return new WaitForSeconds (0.5f);
+        this.gameObject.tag = tags[Random.Range (0, tags.Length)];
+        ResetAnim ();
+        this.gameObject.transform.position = new Vector2 (transform.position.x, Random.Range (7f, 8f));
     }
 
 	//Espera .15s e leva a noz ruim la pra cima
 	IEnumerator DelayBad(){
-        yield return new WaitForSeconds (.1f);
-        this.gameObject.tag = "GoodStatic";
-        this.gameObject.transform.position = new Vector2 (transform.position.x, Random.Range (7.5f, 8f));
-        yield return new WaitForSeconds (.1f);
+        yield return new WaitForSeconds (0.5f);
+        this.gameObject.tag = tags[Random.Range (0, tags.Length)];
+        ResetAnim ();
+        this.gameObject.transform.position = new Vector2 (transform.position.x, Random.Range (7f, 8f));
     }
 
 	//Espera .15s e leva a noz dourada la pra cima
 	IEnumerator DelayGolden(){
-        yield return new WaitForSeconds (.1f);
+        yield return new WaitForSeconds (0.5f);
         goldLife = 2;
-        this.gameObject.tag = "GoodStatic";
-        this.transform.position = new Vector2 (transform.position.x, Random.Range (7.5f, 8f));
-        yield return new WaitForSeconds (.1f);
+        this.gameObject.tag = tags[Random.Range (0, tags.Length)];
+        ResetAnim ();
+        this.transform.position = new Vector2 (transform.position.x, Random.Range (7f, 8f));
     }
 	
 }
