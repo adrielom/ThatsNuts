@@ -6,6 +6,7 @@ public class SetNuts : Nuts {
 
     //declaraçao de variaveis
     float vel;
+    public static bool seenAd;
     public Button frozenNut;
     public Image bgFrozenNut;
     public float frozenNutTimer = 15;
@@ -42,6 +43,7 @@ public class SetNuts : Nuts {
     //roda uma vez ao iniciar o jogo
     void Start () {
 
+        seenAd = false;
         GameObject gameOverLayout = GameObject.Find ("GameOverHUD");
         goLayout = gameOverLayout.GetComponent<Animator> (); 
 
